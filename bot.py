@@ -10,7 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 #list of authorized users
-username_list = ["DarshanPatel11", "parthpatel1997", "mlp9csk", "harmish_patel"]
+username_list = []
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
@@ -22,6 +22,8 @@ def start(bot, update):
 def help(bot, update):
     """Send a message when the command /help is issued."""
     admin = update.message.from_user.username
+    if not username_list:
+         username_list.append(admin)
     if admin == username_list[0]:
         reply = '''Send /get folder_name/file_name.extension to receive a file. 
                 \nSend /ls folder_name to show list of files.
